@@ -123,20 +123,22 @@
         <div class="row">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
           
-            <img src="" alt="Image of your project" class="img-fluid">
+            <img src="images/test_run.png" alt="Program's output showing the chance of a shared birthday for groups of 5 to 100 people" class="img-fluid">
           
           </div>
           <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
             <div class="mb-4">
-              <h3>Project Title</h3>
+              <h3>The Birthday Paradox</h3>
               <p>
                Motivation of the project
               </p>
               <p>
-              Functional requirements/what the project does
+                Instead of relying only on the math aspect, our program tests the paradox by experiment. It program simulates rooms of 5, 10, 15, all the way up to 100 people, giving each person a random birthday. For each room, it will run 20 trials and then record how often at least two people shared the same birthday. The results will then be print as a table, so you can watch the chance of a match go up from almost nothing in small groups to nearly 100% once the room gets to around 50 people.
+
               </p>
               <p>
-              Project design
+                We built the program in Java using object-oriented design, splitting the work into four classes. A <strong>Birthday</strong> represents one person and creates a random, valid month and day (no February 30th). A <strong>Trial</strong> fills a room with people and checks whether any two share a birthday. An <strong>Experiment</strong> runs 20 trials for one room size and calculates the percentage that had a match. Finally, the <strong>Simulation</strong> class runs an experiment for every room size and prints the results. The whole program shares a single random number generator, so every birthday comes from the same source of randomness.
+
               </p>
               <p>
               Implementation
