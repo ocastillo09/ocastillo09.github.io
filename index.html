@@ -130,7 +130,7 @@
             <div class="mb-4">
               <h3>The Birthday Paradox</h3>
               <p>
-               Motivation of the project
+               How many people need to be in the same room before two people in it probably share the same birthday? Its common to guess around 180 since there are 365 days in a year. The real answer is surprising since with just 23 people in a room, there is a 50% of a birthday in common between two people. This would be called the Birthday Paradox
               </p>
               <p>
                 Instead of relying only on the math aspect, our program tests the paradox by experiment. It program simulates rooms of 5, 10, 15, all the way up to 100 people, giving each person a random birthday. For each room, it will run 20 trials and then record how often at least two people shared the same birthday. The results will then be print as a table, so you can watch the chance of a match go up from almost nothing in small groups to nearly 100% once the room gets to around 50 people.
@@ -141,7 +141,11 @@
 
               </p>
               <p>
-              Implementation
+              I was responsible for the <strong>Experiment</strong> and <strong>Simulation</strong> classes. In Experiment, I wrote the logic of the code which would run 20 trials for a given room size and then turns the results into the percentage of the trials with a shared birthday, using helper methods so each one does a singular job. In Simulation, I set up the experiment for every room size from 5 to 100 people and printed the results table, keeping the main method focused only on printing. I also created a single random number generator, so all the birthdays across the program would come from the same source.
+              </p>
+
+              <p>
+              This project helped me to get more comfortable breaking a big problem into small classes that each would have a single job.
               </p>
 
 
@@ -182,6 +186,7 @@
               <span class="icon-graduation-cap d-block h4 text-primary"></span>
               <a href="files/Oriana_Castillo_Resume.pdf" target="_blank">Resume</a>
             </p>
+
           </div>
         </div>
 
