@@ -120,44 +120,61 @@
             <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Projects</h2>
           </div>
         </div>
+
+        <!-- Birthday Paradox -->
         <div class="row">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-          
             <img src="images/test_run.png" alt="Program's output showing the chance of a shared birthday for groups of 5 to 100 people" class="img-fluid">
-          
           </div>
           <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
             <div class="mb-4">
               <h3>The Birthday Paradox</h3>
               <p>
-               How many people need to be in the same room before two people in it probably share the same birthday? Its common to guess around 180 since there are 365 days in a year. The real answer is surprising since with just 23 people in a room, there is a 50% of a birthday in common between two people. This would be called the Birthday Paradox
+                When I first read our project assignment, I guessed you would need a bunch of people since there are 365 days in a year. In our first test run, rooms of 25 people had a shared birthday in 60% of the trials, much more than I expected. This surprising result is called the Birthday Paradox, and our assignment introduced it as a problem we could test with code.
               </p>
               <p>
-                Instead of relying only on the math aspect, our program tests the paradox by experiment. It program simulates rooms of 5, 10, 15, all the way up to 100 people, giving each person a random birthday. For each room, it will run 20 trials and then record how often at least two people shared the same birthday. The results will then be print as a table, so you can watch the chance of a match go up from almost nothing in small groups to nearly 100% once the room gets to around 50 people.
-
+                Instead of relying only on the math, our program tests the paradox by experiment. The program simulates rooms of 5, 10, 15, all the way up to 100 people, giving each person a random birthday. For each room size, it runs 20 trials and records how often at least two people shared the same birthday. The results are then printed as a table, so you can watch the chance of a match go up from almost nothing in small groups to nearly 100% once the room gets to around 50 people.
               </p>
               <p>
                 We built the program in Java using object-oriented design, splitting the work into four classes. A <strong>Birthday</strong> represents one person and creates a random, valid month and day (no February 30th). A <strong>Trial</strong> fills a room with people and checks whether any two share a birthday. An <strong>Experiment</strong> runs 20 trials for one room size and calculates the percentage that had a match. Finally, the <strong>Simulation</strong> class runs an experiment for every room size and prints the results. The whole program shares a single random number generator, so every birthday comes from the same source of randomness.
-
               </p>
               <p>
-              I was responsible for the <strong>Experiment</strong> and <strong>Simulation</strong> classes. In Experiment, I wrote the logic of the code which would run 20 trials for a given room size and then turns the results into the percentage of the trials with a shared birthday, using helper methods so each one does a singular job. In Simulation, I set up the experiment for every room size from 5 to 100 people and printed the results table, keeping the main method focused only on printing. I also created a single random number generator, so all the birthdays across the program would come from the same source.
+                I was responsible for the <strong>Experiment</strong> and <strong>Simulation</strong> classes. In Experiment, I wrote the code that runs 20 trials for a given room size and turns the results into the percentage of trials with a shared birthday, using helper methods so each one does a single job. In Simulation, I set up the experiment for every room size from 5 to 100 people and printed the results table, keeping the main method focused only on printing. I also created the single random number generator there, so all the birthdays across the program come from the same source.
               </p>
-
               <p>
-              This project helped me to get more comfortable breaking a big problem into small classes that each would have a single job.
+                This project helped me get more comfortable breaking a big problem into small classes that each have a single job. At first I tried to do everything in one method, but splitting it into helper methods, one to run the trials and one to calculate the percentage, made it much easier to find mistakes.
               </p>
-
-
             </div>
-
-            
-
           </div>
         </div>
-      </div>
-      
 
+        <!-- Elevator Simulator -->
+        <div class="row">
+          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
+            <img src="images/elevator_uml.png" alt="UML class diagram of the elevator simulator" class="img-fluid">
+          </div>
+          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="mb-4">
+              <h3>Elevator Simulator</h3>
+              <p>
+                This program simulates elevators moving through a building, one round at a time. The building has different types of elevators, each with its own rules, and a scheduler that decides which elevator answers each call. The goal is to get every passenger to their floor and every elevator back to the ground floor.
+              </p>
+              <p>
+                When the program starts, the user tells it how many floors the building has, which scheduler to use (simple or complex), how many of each elevator type to add, and a file with the list of calls. A call is just a person pressing the button in the elevator: it has the floor where they get on and the floor where they want to go. Each round, the scheduler hands out at most one call, and then every elevator either moves one floor, waits a round to pick someone up or drop them off, or heads back to the ground floor when it’s empty. There are four types of elevators, and each one of them has its own rules. A Standard elevator can go to every floor but only takes calls going the same direction it’s already moving. A Freight elevator can also go to every floor but only carries one person at a time. A Penthouse elevator only travels between the ground floor and the top floor, and an Express elevator only serves the ground floor and the top half of the building. The simulation ends once every passenger has been delivered and every elevator is back on the ground floor.
+              </p>
+              <p>
+                We designed the program in Java around an abstract Elevator class that holds everything all elevators share, like their current floor, direction, passengers, and calls, along with the logic for moving one floor at a time. The four elevator types (Standard, Freight, Penthouse, and Express) each extend Elevator and only define what makes them different for example which floors they can stop at and which calls they’ll accept. This uses inheritance and abstraction, and it also follows the Open/Closed Principle, since adding a new elevator type only means writing a new subclass without changing the existing code. The schedulers work the same way the abstract Scheduler class handles keeping track of calls, while SimpleScheduler and ComplexScheduler each decide which elevator gets a call. Each elevator’s data is private, and only the elevator itself can change it. My group made a few assumptions that the assignment didnt fully say. For example, we decided an elevator only counts as “empty” when it has no passengers as well as no assigned calls, since an elevator on its way to pick someone up is still working and shouldn’t head back to the ground floor.
+              </p>
+              <p>
+                I was responsible for making the stubs, the starting versions of the classes, so I wrote Direction, Call, Elevator, Simulator, CallFileReader, and SimulationPrinter. I then built the Call class following test-driven development (TDD), where I wrote each test before the code. I created 5 tests that checked the start and end floors, whether the call is going up or down, and whether the passenger has been picked up. Next, I built the elevator’s movement with TDD, creating 11 tests where the elevator moves to the pickup floor, picks the passenger up, moves to the drop-off floor, drops them off, and returns to floor 1. Finally, I refactored runRound() into small helper methods so the code stayed short and each method did one job.
+              </p>
+              <p>
+                This project taught me how test-driven development changes the way I write code. Writing the test first made me think about how the elevator should behave before I wrote any logic which sometimes writing logic before testing it can get very confusing, and sometimes I started with the simplest code that passed, like always returning true, and let the next test force me to write the real version. I also learned how much branches depend on each other. When I started my elevator branch before my Call pull request was merged, my test failed because the elevator couldn’t see my Call code, and I had to merge the branches to fix it. Finally, working through the different pull requests and the code reviews showed me how important clear communication is on a team, and how giving and responding to feedback makes the code better.              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
 
